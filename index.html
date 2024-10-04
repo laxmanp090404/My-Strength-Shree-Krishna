@@ -10,6 +10,7 @@
     ></script>
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="stylesheet" href="navigation.css" />
     <style>
       body {
         background-image: url(https://www.hitaambrish.com/stat/img/home/quotes-bg.jpg);
@@ -81,9 +82,11 @@
         width: 27%;
         height: 480px;
         transition: opacity 5s ease-in-out;
+        z-index: -1;
       }
       .krishna-image.fade {
         opacity: 0;
+        z-index:-1 ;
       }
       .indexMain p {
         font-size: 16px;
@@ -95,7 +98,6 @@
       h2 {
         color: #ab9353;
       }
-
 
       @media (max-width: 768px) {
         .header {
@@ -121,6 +123,7 @@
           margin: 10px 0px 0px 22px;
           width: 85%;
           height: 350px;
+          z-index: -1;
         }
         .content p {
           font-size: 14px;
@@ -139,7 +142,6 @@
         justify-content: space-between;
         align-items: center;
         justify-content: center;
-
       }
 
       .navigation .homeDiv #homeBtn {
@@ -189,7 +191,7 @@
       .navigation {
         justify-content: space-between;
       }
-      .navigation .navbar{
+      .navigation .navbar {
         display: flex;
       }
       .navigation .navbar a {
@@ -291,45 +293,8 @@
         font-size: 14px;
       }
 
-
-        /* tablet  Responsive Styles */
-        @media (max-width: 1100px){
-          .header {
-          position: unset;
-        }
-        .navigation {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          justify-content: center;
-        }
-        .navigation .navbar {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          margin-top: 20px;
-        }
-        .navbar .navbar-up{
-          gap: 20px;
-          display: flex ;
-          
-        }
-        .navbar .navbar-down{
-      
-          display: flex ;
-          gap: 20px;
-          
-        }
-        .navigation .navbar a {
-          margin: 10px 0;
-          font-size: 12px;
-        }
-        .navigation .homeDiv #homeBtn {
-          min-width: 30px;
-        }
-        .navigation .homeDiv #homeBtn a {
-          font-size: 14px;
-        }
+      /* tablet  Responsive Styles */
+      @media (max-width: 1100px) {
         .footer-content {
           flex-direction: column;
           align-items: center;
@@ -375,12 +340,12 @@
           padding: 9px 15px;
           font-size: 15px;
         }
-
-        }
+      }
       /* Mobile Responsive Styles */
       @media (max-width: 668px) {
         .header {
           position: unset;
+          display: hidden;
         }
         .navigation {
           display: flex;
@@ -397,18 +362,15 @@
           margin: 10px 0;
           font-size: 12px;
         }
-        .navbar .navbar-up{
+        .navbar .navbar-up {
           gap: 20px;
-          display: flex ;
+          display: flex;
           flex-direction: column;
-          
         }
-        .navbar .navbar-down{
-      
-          display: flex ;
+        .navbar .navbar-down {
+          display: flex;
           gap: 20px;
           flex-direction: column;
-          
         }
         .navigation .homeDiv #homeBtn {
           min-width: 80px;
@@ -460,39 +422,27 @@
           font-size: 15px;
         }
       }
-     
     </style>
   </head>
   <body>
-    <div class="header">
-      <div class="navigation">
-        <div class="homeDiv">
-          <button id="homeBtn"><a href="./index.html">Home</a></button>
-        </div>
-        <form class="searchForm">
-          <input
-            type="text"
-            class="searchInput"
-            placeholder="Search all the content"
-          />
-          <button>
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
-        </form>
-        <div class="navbar">
-          <div class="navbar-up">
-            <a href="scriptures.html">Scriptures</a>
-            <a href="gallery.html">Gallery</a>
-          </div>
-          <div class="navbar-down">
-            <a href="#" onclick="showLoginForm()">Discussion Forum</a>
-            <a href="devotional-resources.html">Devotional Resources</a>
-          </div>
-         
-    
-        </div>
-      </div>
-    </div>
+    <nav>
+      <ul class="sidebar">
+        <li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
+        <li><a href="#">Scriptures</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Discussion Forum</a></li>
+        <li><a href="#">Additional Resources</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">MyKrishna</a></li>
+        <li class="hideOnMobile"><a href="#">Scriptures</a></li>
+        <li class="hideOnMobile"><a href="#">Gallery</a></li>
+        <li class="hideOnMobile"><a href="#">Discussion Forum</a></li>
+        <li class="hideOnMobile"><a href="#">Additional Resources</a></li>
+        <li class="menu-button" onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
+      </ul>
+    </nav>
+  
     <div class="indexMain">
       <div class="headDiv">
         <h1>Shree Krishna - My Strength</h1>
@@ -857,6 +807,9 @@
         <p>&copy; All rights reserved 2023, Created by Vishal.</p>
       </div>
     </footer>
-    <script src="script.js"></script>
+    <script src="script.js">
+      
+  
+    </script>
   </body>
 </html>

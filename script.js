@@ -1,6 +1,15 @@
 let isHindi = false;
 const button = document.getElementById("translateBtn");
 
+function showSidebar(){
+  const sidebar = document.querySelector('.sidebar')
+  sidebar.style.display = 'flex'
+}
+function hideSidebar(){
+  const sidebar = document.querySelector('.sidebar')
+  sidebar.style.display = 'none'
+}
+
 function toggleLanguage() {
   const contentEnglish = document.getElementById("content-english");
   const contentHindi = document.getElementById("content-hindi");
@@ -21,6 +30,8 @@ function toggleLanguage() {
   }
 }
 
+
+// Function to fade out the current image and change to the next image
 const krishnaImage = document.getElementById("krishnaImage");
 const imagePaths = [
   "./images/krishna-home-image.jpg",
@@ -33,25 +44,38 @@ let currentImageIndex = 0;
 // Function to fade out the current image and change to the next image
 function fadeOutAndChangeImage() {
   if (krishnaImage) {
-    krishnaImage.classList.add("fade");
+    // Add fade-out class to image
+    krishnaImage.classList.add("fade-out");
+
+    // Wait for fade-out to complete
     setTimeout(() => {
       currentImageIndex = (currentImageIndex + 1) % imagePaths.length;
       krishnaImage.src = imagePaths[currentImageIndex];
-      krishnaImage.classList.remove("fade");
-    }, 2000);
+
+      // Remove fade-out and add fade-in class
+      krishnaImage.classList.remove("fade-out");
+      krishnaImage.classList.add("fade-in");
+
+      // Remove fade-in after the transition completes to prepare for the next transition
+      setTimeout(() => {
+        krishnaImage.classList.remove("fade-in");
+      }, 1000);
+    }, 1000); // This matches the transition time
   } else {
     console.error("krishnaImage element not found");
   }
 }
 
-// Preload and start the fading effect after the first image is loaded
+
 if (krishnaImage) {
   krishnaImage.onload = () => {
     setTimeout(() => {
       fadeOutAndChangeImage();
+      setInterval(fadeOutAndChangeImage, 5000); 
     }, 5000);
   };
 }
+
 
 function openLightbox(imagePath) {
   const lightboxImg = document.getElementById("lightbox-img");
